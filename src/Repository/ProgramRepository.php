@@ -19,6 +19,20 @@ class ProgramRepository extends ServiceEntityRepository
         parent::__construct($registry, Program::class);
     }
 
+    public function findProgramInHorreur(string $ProgramName): array
+    {   
+        $query = $this->createQueryBuilder('crea')
+            ->join('crea.category', 'cat')
+            ->where('cat.name = :ProgramName')
+            ->setMaxResults(3)
+            ->orderBy('crea.id','DESC')
+            ->setParameter('ProgramName', $ProgramName)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+
     // /**
     //  * @return Program[] Returns an array of Program objects
     //  */
