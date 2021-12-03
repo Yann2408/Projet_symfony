@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Season;
+use App\Entity\Episode;
 use App\Entity\Program;
-use App\Repository\EpisodeRepository;
 use App\Repository\SeasonRepository;
+use App\Repository\EpisodeRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,7 +37,7 @@ class ProgramController extends AbstractController
      * @param integer $id
      * @return Response
      * 
-     * @Route("/program/{id<\d+>}", methods={"GET"}, name="program_show")
+     * @Route("/program/{program}", methods={"GET"}, name="program_show")
      */
     public function show(int $id, SeasonRepository $seasonRepository): Response
     {
@@ -73,16 +74,20 @@ class ProgramController extends AbstractController
         return $this->render('program/season_show.html.twig', ['episodes' => $episodes, 'seasonId' => $seasonId, 'programId' => $programId]);
     }
 
-
-    // public function show( Program $programId, Season $seasonsId): Response
-    // {
-    //      if (!$programId) {
-    //         throw $this->createNotFoundException(
-    //            'id invalide ou catégorie vide');
-    //      }
-
-    //      return $this->render('program/show.html.twig', ['program' => $programId, 'season' => $seasonsId]);
-    //     }
+    /**
+     * Undocumented function
+     *
+     * @param Program $program
+     * @param Season $season
+     * @param Episode $episode
+     * @return void
+     * 
+     * @Route("/program/{program}/season/{season}/episode/{episode}", methods={"GET"}, name="program_episode_show" )
+     */
+   public function showEpisode(Program $program, Season $season, Episode $episode)
+   {
+    return $this->render('program/episode_show.html.twig.', ['program' => $program, 'season' => $season, 'episode' => $episode]);
+   }
 }
 
 
