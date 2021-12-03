@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}saison numéro {{episodes.1.season.number}}{% endblock %}
+
+{% block body %}
+
+    <div>
+        <img src="{{episodes.1.season.program.poster}}">
+        <p>{{episodes.1.season.program.title}}</p>
+        <p>{{episodes.1.season.program.summary}}</p>
+    </div>
+
+    <div>
+        <p>saison numéro:{{episodes.1.season.number}}</p>
+        <p>Année de diffusion: {{episodes.1.season.year}}</p>
+        <p>Nombre d'épisodes: {{episodes.1.season.numberofepisodes}}</p>
+        <p>Description:{{episodes.1.season.description}}</p>
+    </div>
+
+    {% for episode in episodes %}
+        <div>
+            <p>Episode {{episode.number}}: {{episode.title}}</p>
+        </div>
+    {% endfor %}
+
+{% endblock %}

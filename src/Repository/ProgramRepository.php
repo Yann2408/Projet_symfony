@@ -19,14 +19,14 @@ class ProgramRepository extends ServiceEntityRepository
         parent::__construct($registry, Program::class);
     }
 
-    public function findProgramInHorreur(string $ProgramName): array
+    public function findProgramInCategory(string $CategoryName): array
     {   
         $query = $this->createQueryBuilder('crea')
             ->join('crea.category', 'cat')
-            ->where('cat.name = :ProgramName')
+            ->where('cat.name = :CategoryName')
             ->setMaxResults(3)
             ->orderBy('crea.id','DESC')
-            ->setParameter('ProgramName', $ProgramName)
+            ->setParameter('CategoryName', $CategoryName)
             ->getQuery();
 
         return $query->getResult();

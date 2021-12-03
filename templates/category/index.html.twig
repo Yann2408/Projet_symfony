@@ -8,7 +8,7 @@
 
     {% for category in categories %}
         <div>
-            <h2>{{ loop.index }} / {{ category.name }}</h2>
+            <h2>{{ category.id }} / {{ category.name }}</h2>
             <a href="{{ path("category_show", { categoryName: category.Name }) }}">Voir les séries de cette catégorie</a>
         </div>
     {% else %}

@@ -40,11 +40,11 @@ class CategoryController extends AbstractController
  */
     public function show(string $categoryName, ProgramRepository $programRepository): Response
     {
-        $programs = $programRepository->findProgramInHorreur($categoryName);
+        $programs = $programRepository->findProgramInCategory($categoryName);
 
-         if (!$programs) {
+         if (!$categoryName) {
             throw $this->createNotFoundException(
-               'No category with name : '.$categoryName.' found in category\'s table.');
+               'Nom invalide ou catégorie vide');
          }
 
         return $this->render('category/show.html.twig', ['programs' => $programs, 'categoryName' =>$categoryName]);
