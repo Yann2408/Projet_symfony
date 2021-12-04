@@ -19,7 +19,7 @@ class SeasonRepository extends ServiceEntityRepository
         parent::__construct($registry, Season::class);
     }
 
-    public function findSeasonInProgram(string $ProgramId): array
+    public function findSeasonInProgram( $ProgramId): array
     {   
         $query = $this->createQueryBuilder('crea')
             ->join('crea.program', 'prog')

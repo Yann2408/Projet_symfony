@@ -8,9 +8,11 @@ use App\Entity\Program;
 use App\Repository\SeasonRepository;
 use App\Repository\EpisodeRepository;
 use App\Repository\ProgramRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\ProgramType;
 
 class ProgramController extends AbstractController
 {
@@ -31,6 +33,24 @@ class ProgramController extends AbstractController
         return $this->render('program/index.html.twig', ['programs' => $programs]);
     }
 
+     /**
+     * @Route("program/new", name="new_program")
+     */
+    public function new(Request $request): Response
+    {
+        $program = new Program();
+        $form = $this->createForm(ProgramType::class, $program);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($program);
+            $entityManager->flush();
+            return $this->redirectToRoute('program_index');
+        }
+
+        return $this->render('program/new.html.twig', ["form" => $form->createView(),]);
+    }
+
     /**
      * Undocumented function
      *
@@ -39,16 +59,15 @@ class ProgramController extends AbstractController
      * 
      * @Route("/program/{program}", methods={"GET"}, name="program_show")
      */
-    public function show(int $id, SeasonRepository $seasonRepository): Response
+    public function show(Program $program, SeasonRepository $seasonRepository ): Response
     {
-        $seasons = $seasonRepository->findSeasonInProgram($id);
+        $seasons = $seasonRepository->findSeasonInProgram($program);
 
-         if (!$id) {
+         if (!$program) {
             throw $this->createNotFoundException(
                'Nom invalide ou catégorie vide');
          }
-
-        return $this->render('program/show.html.twig', ['seasons' => $seasons, 'id' => $id]);
+         return $this->render('program/show.html.twig', ['seasons' => $seasons, 'program' => $program]);
     }
 
 

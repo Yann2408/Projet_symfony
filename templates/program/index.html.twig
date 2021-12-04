@@ -12,14 +12,18 @@
             <img src="{{program.poster}}">
             <h2>{{ program.category.id }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
             <p>{{ program.summary }}</p>
-            <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+            <a href="{{ path("program_show", { program: program.id }) }}">Voir la fiche</a>
         </div>
     {% else %}
 
         Aucune série trouvée.
 
     {% endfor %}
-
+    <div>
+    <a href="{{ path('new_program') }}">Ajouter une série</a>
+    </div>
+    <div>
     <a href="{{ path('program_index') }}">Retour à l'accueil</a>
+    </div>
 
 {% endblock %}
