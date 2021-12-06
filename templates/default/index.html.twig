@@ -2,6 +2,120 @@
 
 {% block body %}
 
-<h1> Bienvenue ! </h1>
+<div id ="containerLiens">
+    <div id = "lienSeries">
+        <p><a href="{{ path("program_index")}}"> Toutes les séries</a></p>
+    </div>
+    <div id ="lienGenres">
+        <p><a href="{{ path("category_index")}}">Tous les genres</a></p>
+    </div>
+</div>
+
+<div id = "containerPageAccueil">
+    <div class ="derniersAjouts">Derniers ajouts</div>
+    <div id ="tousLesprograms">
+        <div class ="program">
+            <div class = "photoInfo">
+                <div class = "photo">
+                    <img src="{{ program.0.poster}}">
+                </div>
+                <div class = "infos">
+                    <a href="{{ path("program_show", { program: program.0.id }) }}"><span>{{program.0.title}}</span></a>
+                    <p><a href="{{ path("category_show", { categoryName: program.0.category.name }) }}">{{program.0.category.name}}</a></p>
+                    <p>Nombre de saisons:</p>
+                    <p>Année de sortie de la serie:</p>
+                </div>
+            </div>
+            <div class = "resume">
+               <p>{{program.0.summary}}</p>
+            </div>
+        </div>
+
+       <div class ="program">
+            <div class = "photoInfo">
+                <div class = "photo">
+                    <img src="{{ program.1.poster}}">
+                </div>
+                <div class = "infos">
+                    <a href="{{ path("program_show", { program: program.1.id }) }}"><span>{{program.1.title}}</span></a>
+                    <p><a href="{{ path("category_show", { categoryName: program.1.category.name }) }}">{{program.1.category.name}}</a></p>
+                    <p>Nombre de saisons:</p>
+                    <p>Année de sortie de la serie:</p>
+                </div>
+            </div>
+            <div class = "resume">
+               <p>{{program.1.summary}}</p>
+            </div>
+        </div>
+
+        <div class ="program">
+            <div class = "photoInfo">
+                <div class = "photo">
+                    <img src="{{ program.2.poster}}">
+                </div>
+                <div class = "infos">
+                    <a href="{{ path("program_show", { program: program.2.id }) }}"><span>{{program.2.title}}</span></a>
+                    <p><a href="{{ path("category_show", { categoryName: program.2.category.name }) }}">{{program.2.category.name}}</a></p>
+                    <p>Nombre de saisons:</p>
+                    <p>Année de sortie de la serie:</p>
+                </div>
+            </div>
+            <div class = "resume">
+               <p>{{program.2.summary}}</p>
+            </div>
+        </div>
+
+        <div class ="program">
+            <div class = "photoInfo">
+                <div class = "photo">
+                    <img src="{{ program.3.poster}}">
+                </div>
+                <div class = "infos">
+                    <a href="{{ path("program_show", { program: program.3.id }) }}"><span>{{program.3.title}}</span></a>
+                    <p><a href="{{ path("category_show", { categoryName: program.3.category.name }) }}">{{program.3.category.name}}</a></p>
+                    <p>Nombre de saisons:</p>
+                    <p>Année de sortie de la serie:</p>
+                </div>
+            </div>
+            <div class = "resume">
+               <p>{{program.3.summary}}</p>
+            </div>
+        </div>
+
+        <div class ="program">
+            <div class = "photoInfo">
+                <div class = "photo">
+                    <img src="{{ program.4.poster}}">
+                </div>
+                <div class = "infos">
+                    <a href="{{ path("program_show", { program: program.4.id }) }}"><span>{{program.4.title}}</span></a>
+                    <p><a href="{{ path("category_show", { categoryName: program.4.category.name }) }}">{{program.4.category.name}}</a></p>
+                    <p>Nombre de saisons:</p>
+                    <p>Année de sortie de la serie:</p>
+                </div>
+            </div>
+            <div class = "resume">
+               <p>{{program.4.summary}}</p>
+            </div>
+        </div>
+
+        <div class ="program">
+            <div class = "photoInfo">
+                <div class = "photo">
+                    <img src="{{ program.5.poster}}">
+                </div>
+                <div class = "infos">
+                    <a href="{{ path("program_show", { program: program.5.id }) }}"><span>{{program.5.title}}</span></a>
+                    <p><a href="{{ path("category_show", { categoryName: program.5.category.name }) }}">{{program.5.category.name}}</a></p>
+                    <p>Nombre de saisons:</p>
+                    <p>Année de sortie de la serie:</p>
+                </div>
+            </div>
+            <div class = "resume">
+               <p>{{program.5.summary}}</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

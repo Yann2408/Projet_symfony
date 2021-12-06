@@ -5,6 +5,8 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <script src="https://kit.fontawesome.com/ce1160e1b3.js" crossorigin="anonymous"></script>
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
@@ -14,6 +16,29 @@
         {% endblock %}
     </head>
     <body>
+        <header>
+            <div class ="header">
+                <div class = "accueilRecherche">
+                    <div id ="accueil">
+                        <p><a href="{{ path("accueil")}}">Accueil</a></p>
+                    </div>
+                    <div id ="rechercheContainer">
+                        <form id="formBarreDeRecherche" action="" class="formulaire">
+                            <button id ="iconeRechercher" class ="" type="submit"><i class="fas fa-search"></i></button>
+                            <input id="inputRecherche" class="champ" type="text" placeholder="Rechercher"/>
+                        </form> 
+                    </div>                 
+                </div>
+                <div class ="wildSeries">
+                <p><a id ="titreWildSeries" href="{{ path("accueil")}}">Wild Series</a></p>
+                </div>
+                <div class = "connexion">
+                    <div id ="seConnecter">Se connecter</div>
+                    <div>Inscription</div>
+                </div>
+            </div>
+        </header>
+        
         {% block body %}{% endblock %}
     </body>
 </html>

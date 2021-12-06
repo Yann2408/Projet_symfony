@@ -31,6 +31,17 @@ class SeasonRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findNumberOfSeason()
+    {
+        $query = $this->createQueryBuilder('crea')
+            ->select('number')
+            ->join('crea.program', 'prog')
+            ->orderBy('crea.id','DESC')
+            ->getQuery();
+
+            return $query->getResult();
+    }
+
     // /**
     //  * @return Season[] Returns an array of Season objects
     //  */

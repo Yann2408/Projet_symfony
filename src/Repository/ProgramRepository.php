@@ -32,6 +32,15 @@ class ProgramRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findTheLastSix()
+    {
+        $query = $this->createQueryBuilder('crea')
+        ->orderBy('crea.id','DESC')
+        ->getQuery();
+
+        return $query->getResult();
+    }
+
 
     // /**
     //  * @return Program[] Returns an array of Program objects
