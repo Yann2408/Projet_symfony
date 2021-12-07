@@ -7,6 +7,10 @@
 {% block body %}
     <h1>Toutes les séries: </h1>
 
+    <div>
+    <a href="{{ path('new_program') }}">Ajouter une série</a>
+    </div>
+
     {% for program in programs %}
         <div>
             <img src="{{program.poster}}">
@@ -19,9 +23,7 @@
         Aucune série trouvée.
 
     {% endfor %}
-    <div>
-    <a href="{{ path('new_program') }}">Ajouter une série</a>
-    </div>
+    
     <div>
     <a href="{{ path('program_index') }}">Retour à l'accueil</a>
     </div>

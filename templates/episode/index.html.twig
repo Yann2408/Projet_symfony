@@ -16,6 +16,7 @@
             </tr>
         </thead>
         <tbody>
+        <a href="{{ path('episode_new') }}">Create new</a>
         {% for episode in episodes %}
             <tr>
                 <td>{{ episode.id }}</td>
@@ -35,5 +36,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('episode_new') }}">Create new</a>
+    
 {% endblock %}
