@@ -36,6 +36,7 @@ class ProgramRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('crea')
         ->orderBy('crea.id','DESC')
+        ->setMaxResults(6)
         ->getQuery();
 
         return $query->getResult();

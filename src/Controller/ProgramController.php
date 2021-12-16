@@ -5,14 +5,17 @@ namespace App\Controller;
 use App\Entity\Season;
 use App\Entity\Episode;
 use App\Entity\Program;
+use App\Service\Slugify;
+use App\Form\ProgramType;
+use Symfony\Component\Mime\Email;
 use App\Repository\SeasonRepository;
 use App\Repository\EpisodeRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Form\ProgramType;
 
 class ProgramController extends AbstractController
 {
@@ -36,38 +39,51 @@ class ProgramController extends AbstractController
      /**
      * @Route("program/new", name="new_program")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Slugify $slugify, MailerInterface $mailer): Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $slug = $slugify->generate($program->getTitle());
+            $program->setSlug($slug);
+
             $entityManager->persist($program);
+
             $entityManager->flush();
+
+            $email = (new Email())
+                    ->from($this->getParameter('mailer_from'))
+                    ->to('yannmalfer@gmail.com')
+                    ->subject('une nouvelle série vient d\'être publiée')
+                    ->html($this->renderView('Program/newProgramEmail.html.twig' , ['program' => $program]));
+
+            $mailer->send($email);
+
             return $this->redirectToRoute('program_index');
         }
 
         return $this->render('program/new.html.twig', ["form" => $form->createView(),]);
     }
-
-    /**
-     * Undocumented function
-     *
-     * @param integer $id
-     * @return Response
-     * 
-     * @Route("/program/{program}", methods={"GET"}, name="program_show")
-     */
-    public function show(Program $program, SeasonRepository $seasonRepository ): Response
+    
+   /**
+    * Undocumented function
+    *
+    * @param Program $program_slug
+    * @param SeasonRepository $seasonRepository
+    * @return Response
+    *@Route("/program/{slug}", methods={"GET"}, name="program_show")
+    */
+    public function show(Program $program_slug, SeasonRepository $seasonRepository ): Response
     {
-        $seasons = $seasonRepository->findSeasonInProgram($program);
+        $seasons = $seasonRepository->findSeasonInProgram($program_slug);
 
-         if (!$program) {
+         if (!$program_slug) {
             throw $this->createNotFoundException(
                'Nom invalide ou catégorie vide');
          }
-         return $this->render('program/show.html.twig', ['seasons' => $seasons, 'program' => $program]);
+         return $this->render('program/show.html.twig', ['seasons' => $seasons, 'program' => $program_slug]);
     }
 
 

@@ -21,15 +21,15 @@
             </tr>
             <tr>
                 <th>Birth_date</th>
-                <td>{{ actor.birthDate ? actor.birthDate|date('Y-m-d') : '' }}</td>
+                <td>{{ actor.BirthDate }}</td>
             </tr>
         </tbody>
     </table>
 
-    <p> il a joué dans: </p>
+    <p> Principales séries: </p>
 
     {% for program in actor.programs %}
-        <li><a href="{{ path("program_show", { program: program.id }) }}">{{ program.title }}</a></li>
+        <li><a href="{{ path("program_show", { slug: program.slug }) }}">{{ program.title }}</a></li>
     {% else %}
         <li>Aucun série pour cet acteur</li>
     {% endfor %}
@@ -40,3 +40,6 @@
 
     {{ include('actor/_delete_form.html.twig') }}
 {% endblock %}
+
+
+{# {{ actor.birthDate ? actor.birthDate|date('Y-m-d') : '' }} #}

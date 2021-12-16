@@ -5,6 +5,7 @@ use App\Entity\Category;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
+
 class CategoryFixtures extends Fixture
 {
     const CATEGORIES = [
@@ -13,7 +14,17 @@ class CategoryFixtures extends Fixture
         'Animation',
         'Fantastique',
         'Horreur',
+        'Drame',
+        'Comédie',
+        'Thriller',
+        'Science-Fiction',
+        'suspense',
     ];
+
+    // public function __construct(     ,self::CATEGORIES)
+    // {
+
+    // }
 
     public function load(ObjectManager $manager)
     {
@@ -22,6 +33,7 @@ class CategoryFixtures extends Fixture
             $category->setName($categoryName);
 
             $manager->persist($category);
+            $this->addReference('category_' . $key, $category);
         }
         $manager->flush();
     }

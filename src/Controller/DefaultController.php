@@ -23,8 +23,10 @@ class DefaultController extends AbstractController
     {
 
         $program = $programRepository->findTheLastSix();
-        // $season = $seasonRepository->findAll();
-        // $nbSeasons = $seasonRepository->findNumberOfSeason();
+        // dd(count($program[5]->getSeason()));
+        // var_dump($program[5]->getSeason());
+        // dd($program[5]->getSeason([0]));
+       
 
         return $this->render('default/index.html.twig', ['website' => 'Wild Séries', 'program' => $program ]);    
     }

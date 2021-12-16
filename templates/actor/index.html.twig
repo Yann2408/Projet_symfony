@@ -21,7 +21,7 @@
                 <td>{{ actor.id }}</td>
                 <td><a href="{{ path('actor_show', {'id': actor.id}) }}">{{ actor.firstname }}</a></td>
                 <td><a href="{{ path('actor_show', {'id': actor.id}) }}">{{ actor.lastname }}</a></td>
-                <td>{{ actor.birthDate ? actor.birthDate|date('Y-m-d') : '' }}</td>
+                <td>{{ actor.BirthDate }}</td>
                 <td>
                     <a href="{{ path('actor_show', {'id': actor.id}) }}">show</a>
                     <a href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>

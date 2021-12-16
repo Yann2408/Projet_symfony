@@ -149,10 +149,12 @@ a{
 .photoInfo{
     display: flex;
     flex-direction: row;
+    height: 70%;
 }
 
 .photo{
     width: 65%;
+    height: 100%;
 }
 
 .photo img{
@@ -163,6 +165,8 @@ a{
 
 .infos{
     padding-left: 10px;
+    height: 100%;
+    width: 34%;
 }
 
 .infos span{
@@ -173,4 +177,6 @@ a{
 
 .resume{
     margin-top: 10px;
+    height: 29%;
+    width: 100%;
 }

@@ -29,10 +29,6 @@ class Season
      */
     private $year;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $number_of_episodes;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -81,18 +77,6 @@ class Season
     public function setYear(int $year): self
     {
         $this->year = $year;
-
-        return $this;
-    }
-
-    public function getNumberOfEpisodes(): ?int
-    {
-        return $this->number_of_episodes;
-    }
-
-    public function setNumberOfEpisodes(int $number_of_episodes): self
-    {
-        $this->number_of_episodes = $number_of_episodes;
 
         return $this;
     }

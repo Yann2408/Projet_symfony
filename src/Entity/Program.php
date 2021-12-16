@@ -63,6 +63,18 @@ class Program
      */
     private $actors;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
+    private $nbSeasons;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $annee_sortie;
+
 
     public function __construct()
     {
@@ -179,5 +191,42 @@ class Program
 
         return $this;
     }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getNbSeasons()
+    {
+       return count($this->getSeason());
+    }
+
+    public function setNbSeasons(int $nbseasons): self
+    {
+        $this->nbseasons = $nbseasons;
+
+        return $this;
+    }
+
+    public function getAnneeSortie(): ?int
+    {
+        return $this->annee_sortie;
+    }
+
+    public function setAnneeSortie(?int $annee_sortie): self
+    {
+        $this->annee_sortie = $annee_sortie;
+
+        return $this;
+    }
+
 
 }

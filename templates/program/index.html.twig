@@ -14,9 +14,9 @@
     {% for program in programs %}
         <div>
             <img src="{{program.poster}}">
-            <h2>{{ program.category.id }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+            <h2>{{ program.title }} - Catégorie : {{ program.category.name }}</h2>
             <p>{{ program.summary }}</p>
-            <a href="{{ path("program_show", { program: program.id }) }}">Voir la fiche</a>
+            <a href="{{ path("program_show", { slug: program.slug }) }}">Voir la fiche</a>
         </div>
     {% else %}
 
