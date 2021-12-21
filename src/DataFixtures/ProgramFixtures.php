@@ -30,7 +30,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 
             $program->setTitle($faker->words(3, true));
             $program->setSummary($faker->paragraph(6));
-            $program->setPoster("https://picsum.photos/200/300?random=" . $faker->numberBetween(1 , 150));
+            $program->setPoster("https://picsum.photos/200/300?random=" . $faker->numberBetween(1 , 500));
             $program->setCategory($this->getReference('category_' . $faker->numberBetween(0 , 9) ));
             // for ($i=0; $i < count(CategoryFixtures::CATEGORIES); $i++) {
             //     $program->setCategory();

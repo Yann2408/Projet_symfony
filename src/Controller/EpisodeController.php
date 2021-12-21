@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Episode;
+use App\Form\CommentType;
 use App\Form\EpisodeType;
 use Symfony\Component\Mime\Email;
 use App\Repository\EpisodeRepository;
@@ -53,11 +55,24 @@ class EpisodeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'episode_show', methods: ['GET'])]
-    public function show(Episode $episode): Response
+    #[Route('/{id}', name: 'episode_show', methods: ['GET', 'POST'])]
+    public function show(Request $request, EntityManagerInterface $entityManager, Episode $episode): Response
     {
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setAuthor($this->getUser());
+            $comment->setEpisode($episode);
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('episode_index', [], Response::HTTP_SEE_OTHER);
+        }
+
         return $this->render('episode/show.html.twig', [
-            'episode' => $episode,
+            'episode' => $episode, 'form' => $form->createView(),
         ]);
     }
 

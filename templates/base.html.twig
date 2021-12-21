@@ -33,7 +33,14 @@
                 <p><a id ="titreWildSeries" href="{{ path("accueil")}}">Wild Series</a></p>
                 </div>
                 <div class = "connexion">
-                    <div id ="seConnecter">Se connecter</div>
+                    <div id ="seConnecter">
+                    {% if app.user %}
+                        {# {{ app.user.email }} #}
+                        <a href="{{ path('app_logout') }}"> Se déconnecter</a>
+                    {% else %}
+                        <a href="{{ path('login') }}"> Se connecter</a>
+                    {% endif %}
+                    </div>
                     <div>Inscription</div>
                 </div>
             </div>
