@@ -1,0 +1,20 @@
+:root {
+    --main-color:#060817;
+    --secondary-color:#191E3B;
+    --lighty:#C3C8DB;
+    --third-color:#62B2BD;
+    background-color: var(--main-color);
+    color: var(--lighty);
+}
+
+a{
+    text-decoration: none;
+    color: var(--lighty);
+}
+
+.btn{
+    background-color: var(--secondary-color);
+    color: var(--lighty);
+    padding: 5px;
+    border-radius: 2px;
+}

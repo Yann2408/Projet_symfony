@@ -5,6 +5,12 @@
 
 
 {% block body %}
+
+    {{ form_start(formBarre) }}
+    {{ form_widget(formBarre) }}
+        <button id ="iconeRechercher" class ="" type="submit"><i class="fas fa-search"></i></button>
+    {{ form_end(formBarre) }}
+    
     <h1>Toutes les séries: </h1>
 
     <div>
@@ -16,7 +22,11 @@
             <img src="{{program.poster}}">
             <h2>{{ program.title }} - Catégorie : {{ program.category.name }}</h2>
             <p>{{ program.summary }}</p>
-            <a href="{{ path("program_show", { slug: program.slug }) }}">Voir la fiche</a>
+            <a href="{{ path("program_show", { 'slug': program.slug }) }}">Voir la fiche</a>
+            <a href="{{ path("program_edit", { 'slug': program.slug }) }}">edit</a>
+            {% if is_granted("ROLE_ADMIN") %}
+                <a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer en tant qu'administrateur</a>
+            {% endif %}
         </div>
     {% else %}
 

@@ -57,7 +57,7 @@ class SeasonController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $entityManager->flush(); 
 
             return $this->redirectToRoute('season_index', [], Response::HTTP_SEE_OTHER);
         }

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/nouvelUtilisateur.css">
+{% endblock %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class='container'>
+        <h1>Nouvel Utilisateur</h1>
+        {{ form_start(registrationForm) }}
+            <div class="field">
+                <div class="label">
+                    {{ form_label(registrationForm.email, null)}}
+                </div>
+                <div class="input">
+                    {{ form_widget(registrationForm.email)}}
+                </div>
+            </div>
+            <div class="field">  
+                <div class="label">
+                    {{ form_label(registrationForm.plainPassword, null, {
+                    label: 'Mot de passe'}) }}
+                </div>
+                <div class="input">
+                    {{ form_widget(registrationForm.plainPassword)}}
+                </div>
+            </div>
+            <div class="conditionsUtilisation">
+                <div class="inputConditionsUtilisation">
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                </div>
+                <div class="labelConditionsUtilisation">
+                    {{ form_label(registrationForm.plainPassword, null, {
+                    label: 'J\'accepte les conditions d\'utilisation'}) }}
+                </div>
+            </div>
+        <button type="submit" class="btn">Envoyer</button>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

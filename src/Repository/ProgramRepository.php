@@ -42,6 +42,21 @@ class ProgramRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function search($mots = null, $categorie = null) {
+        $query = $this->createQueryBuilder('p');
+        if($mots != null){
+            $query->andWhere('MATCH_AGAINST(p.title) AGAINST(:mots boolean)>0')
+                ->setParameter('mots', $mots);
+        }
+        if($categorie != null){
+            $query->leftJoin('p.category', 'c');
+            $query->andWhere('c.id = :id')
+                ->setParameter('id', $categorie);
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
 
     // /**
     //  * @return Program[] Returns an array of Program objects

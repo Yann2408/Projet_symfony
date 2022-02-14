@@ -7,9 +7,10 @@
            and uncomment the following Encore helpers to start using Symfony UX #}
         <script src="https://kit.fontawesome.com/ce1160e1b3.js" crossorigin="anonymous"></script>
         {% block stylesheets %}
-        <link rel="stylesheet" href="/assets/css/style.css">
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
+        <link rel="stylesheet" href="/assets/css/variables.css">
+        <link rel="stylesheet" href="/assets/css/header.css">
 
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
@@ -23,14 +24,15 @@
                         <p><a href="{{ path("accueil")}}">Accueil</a></p>
                     </div>
                     <div id ="rechercheContainer">
-                        <form id="formBarreDeRecherche" action="" class="formulaire">
+                        {# {{ include('barre_recherche/index.html.twig') }} #}
+                        {# <form id="formBarreDeRecherche" action="" class="formulaire">
                             <button id ="iconeRechercher" class ="" type="submit"><i class="fas fa-search"></i></button>
                             <input id="inputRecherche" class="champ" type="text" placeholder="Rechercher"/>
-                        </form> 
+                        </form>  #}
                     </div>                 
                 </div>
                 <div class ="wildSeries">
-                <p><a id ="titreWildSeries" href="{{ path("accueil")}}">Wild Series</a></p>
+                    <p><a id ="titreWildSeries" href="{{ path("accueil")}}">Wild Series</a></p>
                 </div>
                 <div class = "connexion">
                     <div id ="seConnecter">
@@ -41,11 +43,14 @@
                         <a href="{{ path('login') }}"> Se connecter</a>
                     {% endif %}
                     </div>
-                    <div>Inscription</div>
+                    {% if app.user %}
+                    <div>Mon compte</div>
+                    {% else %}
+                    <a href="{{ path('app_register') }}">Inscription</a>
+                    {% endif %}
                 </div>
             </div>
-        </header>
-        
+        </header>       
         {% block body %}{% endblock %}
     </body>
 </html>

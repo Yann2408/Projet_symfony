@@ -1,7 +1,10 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/pageAccueil.css">
+{% endblock %}
 
+{% block body %}
 <div id ="containerLiens">
     <div id = "lienSeries">
         <p><a href="{{ path("program_index")}}"> Toutes les séries</a></p> 

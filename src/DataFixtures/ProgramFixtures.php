@@ -41,6 +41,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             for ($j=0; $j < 5; $j++) {
                 $program->addActor($this->getReference('actor_' . rand(0 , 49)));
             }
+            $program->setOwner($this->getReference('user1'));
             $this->addReference('program_' . $i, $program);
 
             $manager->persist($program);

@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
- * 
+ * @ORM\Table(name="program", indexes={@ORM\Index(columns={"title"}, flags={"fulltext"})})
  */
 class Program
 {
@@ -59,7 +59,7 @@ class Program
     private $season;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Actor::class, mappedBy="programs")
+     * @ORM\ManyToMany(targetEntity=Actor::class, mappedBy="programs")     
      */
     private $actors;
 
@@ -68,13 +68,16 @@ class Program
      */
     private $slug;
 
-    private $nbSeasons;
-
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $annee_sortie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="programs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $owner;
 
     public function __construct()
     {
@@ -228,5 +231,15 @@ class Program
         return $this;
     }
 
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
 
+    public function setOwner(?User $owner): self
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
 }

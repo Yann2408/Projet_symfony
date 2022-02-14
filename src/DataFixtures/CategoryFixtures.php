@@ -18,7 +18,7 @@ class CategoryFixtures extends Fixture
         'Comédie',
         'Thriller',
         'Science-Fiction',
-        'suspense',
+        'Suspense',
     ];
 
     // public function __construct(     ,self::CATEGORIES)
