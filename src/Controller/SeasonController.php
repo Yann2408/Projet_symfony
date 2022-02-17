@@ -33,7 +33,7 @@ class SeasonController extends AbstractController
             $entityManager->persist($season);
             $entityManager->flush();
 
-            return $this->redirectToRoute('season_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('accueil', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('season/new.html.twig', [
@@ -59,7 +59,7 @@ class SeasonController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush(); 
 
-            return $this->redirectToRoute('season_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('accueil', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('season/edit.html.twig', [

@@ -1,0 +1,42 @@
+.container{
+    background-color: var(--secondary-color); 
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    margin-bottom: 40px;
+}
+
+.categories{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 75%;
+    column-gap: 70px;
+}
+
+.btnCategorie{
+    background-color: var(--main-color);
+    color: var(--lighty);
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    margin-bottom: 30px;
+}
+
+.buttons{
+    margin-left: 25%;   
+}
+
+.btn{
+    border: none;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}

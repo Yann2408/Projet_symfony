@@ -25,7 +25,7 @@ class BarreRechercheType extends AbstractType
             ->add('categorie', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'label' => false,
+                'label' => 'Genre',
                 'required' => false
             ])
         ;

@@ -12,11 +12,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BarreRechercheController extends AbstractController
 {
     #[Route('/barre/recherche', name: 'barre_recherche')]
-    public function search(Request $request): Response
+    public function search(programRepository $progrmaRepository, Request $request): Response
     {
+
+        $programs = $progrmaRepository->findAll();
 
         $formBarre = $this->createForm(BarreRechercheType::class);
         $search = $formBarre->handleRequest($request);
+
+        if ($formBarre->isSubmitted() && $formBarre->isValid()){
+            $programs = $progrmaRepository->search(
+                $search->get('mots')->getData(),
+                $search->get('categorie')->getData()
+            );
+        }
         
         return $this->render('barre_recherche/barre.html.twig', [
             'formBarre' => $formBarre->createView()

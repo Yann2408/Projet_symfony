@@ -29,7 +29,6 @@ class ProgramController extends AbstractController
    * 
    * @Route("/program/", name="program_index")
    */
-
     public function index(programRepository $progrmaRepository, Request $request): Response
     {
         $programs = $progrmaRepository->findAll();
@@ -41,7 +40,7 @@ class ProgramController extends AbstractController
             $programs = $progrmaRepository->search(
                 $search->get('mots')->getData(),
                 $search->get('categorie')->getData()
-        );
+            );
         }
 
         return $this->render('program/index.html.twig', ['programs' => $programs, 
@@ -75,7 +74,7 @@ class ProgramController extends AbstractController
 
             $mailer->send($email);
 
-            return $this->redirectToRoute('program_index');
+            return $this->redirectToRoute('accueil');
         }
 
         return $this->render('program/new.html.twig', ["form" => $form->createView(),]);

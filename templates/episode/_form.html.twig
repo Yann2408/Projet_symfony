@@ -1,4 +1,43 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="container">
+        <div class="infos">
+            <div class="label">
+                {{ form_label(form.number) }}
+            </div>
+            <div>
+                {{ form_widget(form.number, {'attr': {'class': 'inputNom'}}) }} 
+            </div>
+            <div class="form-error">
+                {{ form_errors(form.number) }}
+            </div>
+            <div class="label">
+                {{ form_label(form.title) }}
+            </div>
+            <div>
+                {{ form_widget(form.title, {'attr': {'class': 'inputNom'}}) }} 
+            </div>
+            <div class="form-error">
+                {{ form_errors(form.title) }}
+            </div>
+            <div class="label">
+                {{ form_label(form.summary) }}
+            </div>
+            <div>
+                {{ form_widget(form.summary, {'attr': {'class': 'inputNom'}}) }} 
+            </div>
+            <div class="form-error">
+                {{ form_errors(form.summary) }}
+            </div>
+            <div class="label">
+                {{ form_label(form.season) }}
+            </div>
+            <div>
+                {{ form_widget(form.season, {'attr': {'class': 'inputNom'}}) }} 
+            </div>
+            <div class="form-error">
+                {{ form_errors(form.season) }}
+            </div>
+        </div>
+    <button class="btn-Secondary">{{ button_label|default('Save') }}</button>
+    </div>
 {{ form_end(form) }}

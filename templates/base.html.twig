@@ -19,30 +19,32 @@
     <body>
         <header>
             <div class ="header">
-                <div class = "accueilRecherche">
-                    <div id ="accueil">
-                        <p><a href="{{ path("accueil")}}">Accueil</a></p>
-                    </div>
-                    <div id ="rechercheContainer">
-                        {# {{ include('barre_recherche/index.html.twig') }} #}
-                        {# <form id="formBarreDeRecherche" action="" class="formulaire">
-                            <button id ="iconeRechercher" class ="" type="submit"><i class="fas fa-search"></i></button>
-                            <input id="inputRecherche" class="champ" type="text" placeholder="Rechercher"/>
-                        </form>  #}
-                    </div>                 
-                </div>
                 <div class ="wildSeries">
                     <p><a id ="titreWildSeries" href="{{ path("accueil")}}">Wild Series</a></p>
                 </div>
-                <div class = "connexion">
-                    <div id ="seConnecter">
+                {# <div class = "accueilRecherche"> #}
+                    {# <div id ="rechercheContainer">
+                        {{render(controller('App\\Controller\\BarreRechercheController::search'))}}
+
+                        <form id="formBarreDeRecherche" action="" class="formulaire">
+                            <button id ="iconeRechercher" class ="" type="submit"><i class="fas fa-search"></i></button>
+                            <input id="inputRecherche" class="champ" type="text" placeholder="Rechercher"/>
+                        </form> 
+                    </div>#}
+                {# </div> #}
+                <div class = "menu">
+                    {% if app.user and is_granted("ROLE_ADMIN") %}
+                    <a href="{{ path('new_program') }}">Ajouter une série</a>
+                    <a href="{{ path('season_new') }}">Ajouter une saison</a>
+                    <a href="{{ path('episode_new') }}">Ajouter un épisode</a>
+                    <a href="{{ path('actor_new') }}">Ajouter un acteur</a>
+                    {% endif %}
+                    <p><a href="{{ path("accueil")}}">Accueil</a></p>
                     {% if app.user %}
-                        {# {{ app.user.email }} #}
                         <a href="{{ path('app_logout') }}"> Se déconnecter</a>
                     {% else %}
                         <a href="{{ path('login') }}"> Se connecter</a>
                     {% endif %}
-                    </div>
                     {% if app.user %}
                     <div>Mon compte</div>
                     {% else %}

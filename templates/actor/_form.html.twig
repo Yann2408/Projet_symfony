@@ -1,4 +1,55 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="container">
+        <div class="formInfos">
+            <div class="infos">
+                <div class="label">
+                    {{ form_label(form.firstname) }}
+                </div>
+                <div>
+                    {{ form_widget(form.firstname, {'attr': {'class': 'inputNom'}}) }} 
+                </div>
+                <div class="form-error">
+                    {{ form_errors(form.firstname) }}
+                </div>
+                <div class="label">
+                    {{ form_label(form.lastname) }}
+                </div>
+                <div>
+                    {{ form_widget(form.lastname, {'attr': {'class': 'inputNom'}}) }} 
+                </div>
+                <div class="form-error">
+                    {{ form_errors(form.lastname) }}
+                </div>
+                <div class="label">
+                    {{ form_label(form.birth_date) }}
+                </div>
+                <div>
+                    {{ form_widget(form.birth_date, {'attr': {'class': 'inputNom'}}) }} 
+                </div>
+                <div class="form-error">
+                    {{ form_errors(form.birth_date) }}
+                </div>
+            </div>
+        </div>
+        <div class="formSeries">
+            <div class="label">
+                {{ form_label(form.programs) }}
+            </div>
+            <div class="all-checkboxes">
+                <p class="titreSeries">Séries</p>
+                {% for checkbox in form.programs.children %}
+                <div class="checkbox">
+                    {{ form_label(checkbox) }}
+                    {{ form_widget(checkbox) }}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="form-error">
+                {{ form_errors(form.programs) }}
+            </div>
+        </div>
+    </div>
+    <div class="bouton">
+        <button class="btn-Secondary">{{ button_label|default('Ajouter') }}</button>
+    </div>
 {{ form_end(form) }}

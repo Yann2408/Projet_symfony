@@ -1,0 +1,178 @@
+.rechercheContainer{
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 50px auto;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid var(--main-color);
+    border-radius: 10px;
+    width: 500px;
+    height: 35px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#barre_recherche{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-around;
+}
+
+#iconeRechercher{
+    background-color: var(--secondary-color);
+    color: var(--lighty);
+    border: none;
+    padding-left: 5px;
+}
+
+.fas{
+    background-color: var(--main-color);
+    color: var(--lighty);
+    border: none;
+    margin-left: 10px;
+}
+
+label{
+    margin-right: 10px;
+}
+
+input, select {
+    background-color: var(--secondary-color);
+    color: var(--lighty);
+    border: 2px solid var(--main-color);
+    padding-left: 10px;
+    border-radius: 5px;
+    width: 150px;
+    font-weight: bold;
+}
+
+.btn{
+    border: none;
+    margin-bottom: 10px;
+    margin-left: 50px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    background-color: var(--secondary-color); 
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 5px;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.tousLesPrograms{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    margin-left: 50px;
+    margin-right: 50px;
+    
+}
+
+.program{
+    width: 20%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.photoInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.photo{
+    width: auto;
+    height: 100%;
+}
+
+.photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.infos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.infos span{
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--third-color)
+}
+
+li{
+    list-style: none;
+}
+
+.titre{
+    display: flex;
+    justify-content: center;
+}
+
+.titre a {
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--third-color)
+}
+
+.genre{
+    background-color: var(--main-color);
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+.btn-Secondary{
+    border: none;
+}
+
+.formDelete{
+    border: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.boutonsEditerSupprimer{
+    display: flex;
+    flex-direction: row;
+}
+
+.btnDelete{
+    background-color: var(--main-color);
+    color: var(--lighty);
+    padding: 5px;
+    border: none;
+}

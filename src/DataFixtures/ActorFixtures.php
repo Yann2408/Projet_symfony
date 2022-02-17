@@ -26,31 +26,7 @@ class ActorFixtures extends Fixture
             $this->addReference('actor_' . $i, $actor);
             $manager->persist($actor);
         }
-
-        $manager->flush();
-    }
-
-
-
-    // public const ACTOR = array(
-    //     array('firstname' => 'Jeffrey', 'lastname' => 'Dean Morgan', 'birth_day' => '1966-04-22'),
-    //     array('firstname' => 'Chandler', 'lastname' => 'Riggs', 'birth_day' => '1999-06-27')); 
         
-    // public function load(ObjectManager $manager): void
-    // {
-    //     foreach (self::ACTOR as $key => $a){
-    //         $actor = new Actor();
-    //         $actor->setFirstName($a['firstname']);
-    //         $actor->setLastName($a['lastname']);
-    //         $actor->setBirthDate($a['birth_day']);
-
-    //         $this->addReference('actor_' . $key, $actor);
-
-    //         $manager->persist($actor);
-    //     }
-
-    //     $manager->flush();
-    // }
-
-    
+        $manager->flush();
+    } 
 }

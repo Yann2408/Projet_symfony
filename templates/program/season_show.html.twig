@@ -2,24 +2,52 @@
 
 {% block title %}saison numéro {{episodes.1.season.number}}{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/variables.css">
+    <link rel="stylesheet" href="/assets/css/program/saisonShow.css">
+{% endblock %}
+
 {% block body %}
-
-    <div>
-        <img src="{{episodes.1.season.program.poster}}">
-        <p>{{episodes.1.season.program.title}}</p>
-        <p>{{episodes.1.season.program.summary}}</p>
+    <div class="options">
+        <button class="btn"><a href="{{ path("program_show", { slug: episodes.1.season.program.slug }) }}"> Retour</a></button>
+    {% if app.user and is_granted("ROLE_ADMIN") %}
+        <button class="btn"><a href="{{ path('episode_new') }}">Ajouter un épisode</a></button>
+        <button class="btn"><a href="{{ path('season_edit', {id: episodes.1.season.id}) }}">Modifier la saison</a></button>
+        <form method="post" action="{{ path('season_delete', {'id': episodes.1.season.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ episodes.1.season.id) }}">
+            <button class="btnDelete">Supprimer la saison</button>
+        </form>
     </div>
-
-    <div>
-        <p>saison numéro:{{episodes.1.season.number}}</p>
-        <p>Année de diffusion: {{episodes.1.season.year}}</p>
-        <p>Description:{{episodes.1.season.description}}</p>
-    </div>
-
-    {% for episode in episodes %}
-        <div>
-            <a href="{{ path("program_episode_show", { program: episode.season.program.id, season: episode.season.id, episode: episode.id}) }}">episode {{episode.number}}: {{episode.title}} </a>
+    {% endif %}
+    <div class="container">
+        <div class="photoInfos">
+            <div class="photo">
+                <img src="{{episodes.1.season.program.poster}}">
+            </div>
+            <div class="infos">
+                <div class="titres">
+                    <div class="titreSerie">
+                        <h1>{{episodes.1.season.program.title}}</h1>
+                    </div>
+                    <div class="numeroSaison">
+                        <p>saison {{episodes.1.season.number}}</p>
+                    </div>
+                </div>
+                <div class="resumeEtEpisodes">
+                    <div class="resume">
+                        <p>{{episodes.1.season.description}}</p>
+                    </div>
+                    <div class="episodes">
+                        <p class="genre"><a href="{{ path("category_show", { categoryName: episodes.1.season.program.category.name }) }}">{{episodes.1.season.program.category.name}}</a></p>
+                        <p>Année de diffusion: {{episodes.1.season.year}}</p>
+                        {% for episode in episodes %}
+                            <div>
+                                <a href="{{ path("program_episode_show", { program: episode.season.program.id, season: episode.season.id, episode: episode.id}) }}">episode {{episode.number}}: {{episode.title}} </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
-    {% endfor %}
-
+    </div> 
 {% endblock %}

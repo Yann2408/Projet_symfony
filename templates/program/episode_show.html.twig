@@ -2,11 +2,37 @@
 
 {% block title %}saison numéro {{episode.season.number}}{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/variables.css">
+    <link rel="stylesheet" href="/assets/css/program/episodeShow.css">
+{% endblock %}
+
 {% block body %}
-
-    <p>{{episode.season.program.title}}</p>
-    <p>saison numéro:{{episode.season.number}}</p>
-    <p>episode {{episode.number}}: {{episode.title}}</p>
-    <p>résumé: {{episode.summary}}</p>
-
+    <div class="options">
+        <button class="btn">
+            <a href="{{ path("program_season_show", { programId: episode.season.program.id, seasonId: episode.season.id}) }}">Retour</a>
+        </button>
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <button class="btn"><a href="{{ path('episode_edit', { 'id': episode.id} ) }}">Modifier l'épisode</a></button>
+            {{ include('episode/_delete_form.html.twig') }}
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="photoInfos">
+            <div class="photo">
+                <img src="{{episode.season.program.poster}}">
+            </div>
+            <div class="infos">
+                <div class="titreSerie">
+                    <h1>{{episode.season.program.title}}</h1>
+                </div>
+                <div class="titreEpisode">
+                    <p>{{episode.title}}</p><p>saison {{episode.season.number}} episode {{episode.number}}</p>
+                </div>
+                <div class="resume">
+                    <p>{{episode.summary}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

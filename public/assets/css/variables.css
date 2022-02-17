@@ -18,3 +18,10 @@ a{
     padding: 5px;
     border-radius: 2px;
 }
+
+.btn-Secondary{
+    background-color: var(--main-color);
+    color: var(--lighty);
+    padding: 5px;
+    border-radius: 2px;
+}

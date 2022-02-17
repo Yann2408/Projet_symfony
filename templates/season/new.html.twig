@@ -2,10 +2,15 @@
 
 {% block title %}New Season{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/variables.css">
+    <link rel="stylesheet" href="/assets/css/saison/form.css">
+{% endblock %}
+
 {% block body %}
-    <h1>Create new Season</h1>
+    <button class="btn"><a href="{{ path('program_index') }}">Retour à la liste les séries</a></button>
+    <h1>Nouvelle saison</h1>
 
-    {{ include('season/_form.html.twig') }}
+    {{ include('season/_form.html.twig', {'button_label': 'Ajouter'}) }}
 
-    <a href="{{ path('season_index') }}">back to list</a>
 {% endblock %}

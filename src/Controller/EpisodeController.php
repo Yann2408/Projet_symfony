@@ -46,7 +46,7 @@ class EpisodeController extends AbstractController
 
             $mailer->send($email);
 
-            return $this->redirectToRoute('episode_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('accueil', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('episode/new.html.twig', [
@@ -85,7 +85,7 @@ class EpisodeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('episode_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('accueil', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('episode/edit.html.twig', [

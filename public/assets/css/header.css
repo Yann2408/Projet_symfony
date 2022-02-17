@@ -8,19 +8,19 @@
     height: 90px;
 }
 
-.accueilRecherche{
+/* .accueilRecherche{
     display: flex;
     justify-content: flex-start;
     align-items: center;   
     width: 30%;
     font-size: 20px;
-}
+} */
 
-#rechercheContainer{
+/* #rechercheContainer{
     padding-left: 50px;
-}
+} */
 
-#formBarreDeRecherche{
+/* #formBarreDeRecherche{
     display: flex;
     align-items: center;
     padding-left: 10px;
@@ -28,7 +28,7 @@
     border-radius: 10px;
     height: 35px;
     width: 200px;
-}
+} */
 
 #iconeRechercher{
     background-color: var(--secondary-color);
@@ -38,17 +38,17 @@
 }
 
 
-#inputRecherche{
+/* #inputRecherche{
     background-color: var(--main-color);
     color: var(--lighty);
     border: none;
     padding-left: 10px;
 
-}
+} */
 
 .wildSeries{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 30%;
     font-size: 40px;
@@ -59,14 +59,11 @@
     color: var(--third-color);
 }
 
-.connexion{
+.menu{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 30%;
+    width: 70%;
     font-size: 20px;
-}
-
-#seConnecter{
-    padding-right: 50px;
+    gap: 50px
 }
