@@ -10,7 +10,7 @@
 .btn{
     border: none;
     margin-bottom: 10px;
-    margin-top: 50px; 
+    margin-top: 50px;
 }
 
 .btnDelete{
@@ -20,6 +20,7 @@
     border: none;
     margin-top: 50px;
     margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 .container{
@@ -33,11 +34,12 @@
 .photoInfos{
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 100%;
     gap: 20px;
     padding-bottom: 20px;
     padding-top: 20px;
     padding-left: 20px;
+    padding-right: 20px;
 }
 
 .photo{   
@@ -45,10 +47,34 @@
     border-radius: 5px;
 }
 
+img{
+    width: 100%;
+}
+
+.infos{
+    width: 75%;
+}
+
 .titreSerie{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+h1{
     color: var(--third-color);
     font-size: 20px;
-    padding-left: 3%;
+}
+
+.btnCommentaire{
+    background-color: var(--lighty);
+    border-radius: 5px;
+}
+
+.btnCommentaire a{
+    color: var(--main-color);
 }
 
 .titreEpisode{
@@ -56,9 +82,12 @@
     flex-direction: row;
     justify-content: space-between;
     font-size: 20px;
-    padding-left: 3%;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .resume{
-    padding-left: 3%;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
 }

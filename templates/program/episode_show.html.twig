@@ -25,6 +25,7 @@
             <div class="infos">
                 <div class="titreSerie">
                     <h1>{{episode.season.program.title}}</h1>
+                    {# <button class="btnCommentaire"><a href="{{path('comment_new')}}">Laisser un commentaire</a></button> #}
                 </div>
                 <div class="titreEpisode">
                     <p>{{episode.title}}</p><p>saison {{episode.season.number}} episode {{episode.number}}</p>
@@ -35,4 +36,12 @@
             </div>
         </div>
     </div>
+    <div class="commentaire">
+        <p>Laisser un commentaire et une note à l'épisode</p>
+        {{ include('comment/_form.html.twig') }}
+    </div>
+    {% for comment in episode.comments %}
+        {{ comment.comment }}
+        {{ comment.rate }}
+    {% endfor %}
 {% endblock %}

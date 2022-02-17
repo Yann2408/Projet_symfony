@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Season;
+use App\Entity\Comment;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Service\Slugify;
+use App\Form\CommentType;
 use App\Form\ProgramType;
 use App\Form\BarreRechercheType;
 use Symfony\Component\Mime\Email;
@@ -130,11 +132,24 @@ class ProgramController extends AbstractController
      * @param Episode $episode
      * @return void
      * 
-     * @Route("/program/{program}/season/{season}/episode/{episode}", methods={"GET"}, name="program_episode_show" )
+     * @Route("/program/{program}/season/{season}/episode/{episode}", methods={"GET", "POST"}, name="program_episode_show" )
      */
-   public function showEpisode(Program $program, Season $season, Episode $episode)
+   public function showEpisode(Program $program, Season $season, Episode $episode, EntityManagerInterface $entityManager, Request $request)
    {
-    return $this->render('program/episode_show.html.twig.', ['program' => $program, 'season' => $season, 'episode' => $episode]);
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setAuthor($this->getUser());
+            $comment->setEpisode($episode);
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('accueil', [], Response::HTTP_SEE_OTHER);
+        }
+    return $this->render('program/episode_show.html.twig.', 
+        ['program' => $program, 'season' => $season, 'episode' => $episode, 'form' => $form->createView(),]);
    }
 
    /**

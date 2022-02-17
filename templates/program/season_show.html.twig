@@ -42,7 +42,7 @@
                         <p>Année de diffusion: {{episodes.1.season.year}}</p>
                         {% for episode in episodes %}
                             <div>
-                                <a href="{{ path("program_episode_show", { program: episode.season.program.id, season: episode.season.id, episode: episode.id}) }}">episode {{episode.number}}: {{episode.title}} </a>
+                                <a href="{{ path("program_episode_show", { program: episode.season.program.id, season: episode.season.id, episode: episode.id}) }}">épisode {{episode.number}}: {{episode.title}} </a>
                             </div>
                         {% endfor %}
                     </div>

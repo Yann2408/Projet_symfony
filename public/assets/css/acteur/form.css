@@ -16,6 +16,7 @@
     border: none;
     margin-top: 50px;
     margin-left: 50px;
+    border-radius: 5px;
 }
 
 h1{
@@ -85,6 +86,5 @@ h1{
 .btn-Secondary{
     margin-bottom: 10px;
     border: 1px solid var(--lighty);
-    border-radius: 5px;
     width: 70px;
 }

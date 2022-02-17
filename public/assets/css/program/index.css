@@ -175,4 +175,5 @@ li{
     color: var(--lighty);
     padding: 5px;
     border: none;
+    border-radius: 5px;
 }
