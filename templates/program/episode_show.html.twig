@@ -49,7 +49,7 @@
                     <p>{{ comment.rate }}/10</p>
                 </div>
                 <p>{{ comment.comment }}</p>
-                {% if app.user and is_granted("ROLE_ADMIN") or app.user.id == comment.author.id  %}
+                {% if app.user and is_granted("ROLE_ADMIN") or app.user == comment.author %}
                     <div class="optionsCommentaire">
                         <button class="btn-Secondary"><a href="{{ path('comment_edit', { 'id': comment.id} ) }}">Modifier le commentaire</a></button>
                         {{ include('comment/_delete_form.html.twig') }}

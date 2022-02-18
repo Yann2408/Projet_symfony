@@ -1,0 +1,93 @@
+.boutons{
+    display: flex;
+    flex-direction: row;
+}
+
+.btn{
+    border: none;
+    margin-left: 15%;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.btnDeleteCommentaire{
+    background-color: var(--secondary-color);
+    color: var(--lighty);
+    padding: 5px;
+    border: none;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+
+.containerCommentaire{
+    background-color: var(--secondary-color);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 70%;
+    border-radius: 5px;
+}
+
+.titreEtNote{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.titreEtNote p{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.note{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.note label{
+    padding-right: 5px;
+}
+
+.nouveauCommentaire{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.labelComment{
+    margin-bottom: 5px;
+}
+
+textarea, input{
+    width: 100%;
+}
+
+textarea{
+    height: 100px;
+}
+
+.btnEnvoyer{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-Secondary{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.btnConnexion{
+    background-color: var(--secondary-color);
+    color: var(--lighty);
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 15%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
