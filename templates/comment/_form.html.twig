@@ -1,4 +1,32 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="containerCommentaire">
+        <div class="titreEtNote">
+            <p>Laisser un commentaire et une note à l'épisode</p>
+            <div class="note">
+                <div class="label">
+                        {{ form_label(form.rate) }}
+                    </div>
+                    <div>
+                        {{ form_widget(form.rate, {'attr': {'class': 'inputNom'}}) }} 
+                    </div>
+                    <div class="form-error">
+                        {{ form_errors(form.rate) }}
+                    </div>
+                </div>
+            </div>
+        <div class="nouveauCommentaire">
+            <div class="labelComment">
+                {{ form_label(form.comment) }}
+            </div>
+            <div>
+                {{ form_widget(form.comment, {'attr': {'class': 'inputNom'}}) }} 
+            </div>
+            <div class="form-error">
+                {{ form_errors(form.comment) }}
+            </div>
+        </div>
+        <div class="btnEnvoyer">
+            <button class="btn-Secondary">{{ button_label|default('Envoyer') }}</button>
+        </div>
+    </div>
 {{ form_end(form) }}
