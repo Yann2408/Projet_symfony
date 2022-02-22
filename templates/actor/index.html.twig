@@ -1,39 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Actor index{% endblock %}
+{% block title %}Liste des acteurs{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/variables.css">
+    <link rel="stylesheet" href="/assets/css/acteur/index.css">
+{% endblock %}
 
 {% block body %}
-    <h1>Actor index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Birth_date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="titreEtAjoutActeur">
+        <h1>Liste des acteurs</h1>
+        <button class="btn"><a href="{{ path('actor_new') }}">Ajouter un acteur</a></button>
+    </div>
+    <div class="container">
+        <div class="titres">
+            <div class="id">Id</div>
+            <div class="prenom">Prenom</div>
+            <div class="nom">Nom</div>
+            <div class="date">Date de naissance</div>
+            <div class="actions">Actions</div>
+        </div>
         {% for actor in actors %}
-            <tr>
-                <td>{{ actor.id }}</td>
-                <td><a href="{{ path('actor_show', {'id': actor.id}) }}">{{ actor.firstname }}</a></td>
-                <td><a href="{{ path('actor_show', {'id': actor.id}) }}">{{ actor.lastname }}</a></td>
-                <td>{{ actor.BirthDate }}</td>
-                <td>
-                    <a href="{{ path('actor_show', {'id': actor.id}) }}">show</a>
-                    <a href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
-                </td>
-            </tr>
+        <div class="infos">
+            <div class="id">{{ actor.id }}</div>
+            <div class="prenom">{{ actor.firstname }}</div>
+            <div class="nom">{{ actor.lastname }}</div>
+            <div class="date">{{ actor.BirthDate }}</div>
+            <div class="actions">
+                <a href="{{ path('actor_show', {'id': actor.id}) }}">Voir l'acteur</a>
+                <a href="{{ path('actor_edit', {'id': actor.id}) }}">Modifier l'acteur</a>
+                {{ include('actor/_delete_form.html.twig') }}
+            </div>
+        </div>
         {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
+            <p colspan="7">Aucun acteur trouvé</p>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('actor_new') }}">Create new</a>
+    </div>   
 {% endblock %}

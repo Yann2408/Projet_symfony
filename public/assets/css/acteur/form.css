@@ -4,7 +4,6 @@
 }
 
 .btn{
-    border: none;
     margin-top: 50px;
     margin-left: 50px;
 }
@@ -13,7 +12,6 @@
     background-color: var(--secondary-color);
     color: var(--lighty);
     padding: 5px;
-    border: none;
     margin-top: 50px;
     margin-left: 50px;
     border-radius: 5px;

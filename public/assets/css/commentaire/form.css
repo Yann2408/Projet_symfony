@@ -4,7 +4,6 @@
 }
 
 .btn{
-    border: none;
     margin-left: 15%;
     margin-top: 50px;
     margin-bottom: 10px;
@@ -14,7 +13,6 @@
     background-color: var(--secondary-color);
     color: var(--lighty);
     padding: 5px;
-    border: none;
     margin-top: 50px;
     margin-bottom: 10px;
     margin-left: 20px;
@@ -79,7 +77,6 @@ textarea{
 .btn-Secondary{
     margin-top: 20px;
     margin-bottom: 10px;
-    border: none;
 }
 
 .btnConnexion{

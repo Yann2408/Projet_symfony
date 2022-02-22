@@ -2,44 +2,40 @@
 
 {% block title %}Actor{% endblock %}
 
-{% block body %}
-    <h1>Actor</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ actor.id }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ actor.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ actor.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Birth_date</th>
-                <td>{{ actor.BirthDate }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <p> Principales séries: </p>
-
-    {% for program in actor.programs %}
-        <li><a href="{{ path("program_show", { slug: program.slug }) }}">{{ program.title }}</a></li>
-    {% else %}
-        <li>Aucun série pour cet acteur</li>
-    {% endfor %}
-
-    <a href="{{ path('actor_index') }}">back to list</a>
-
-    <a href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
-
-    {{ include('actor/_delete_form.html.twig') }}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/variables.css">
+    <link rel="stylesheet" href="/assets/css/acteur/show.css">
 {% endblock %}
 
+{% block body %}
+    <div class="options">
+        <button class="btn"><a href="{{ path('program_index') }}">Retour à la liste des séries</a></button>
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+           <button class="btn"><a href="{{ path('actor_edit', {'id': actor.id}) }}">Modifier la fiche de l'acteur</a></button>
+            {{ include('actor/_delete_form.html.twig') }}
+        {% endif %}
+    </div>
 
-{# {{ actor.birthDate ? actor.birthDate|date('Y-m-d') : '' }} #}
+    <div class="container">
+        <div class="photo">
+            <img src="/assets/images/Keanu_Reeves.jpg">
+        </div>
+        <div class="identiteEtSeries">
+            <div class="identite">
+                <h1>{{ actor.firstname }} {{ actor.lastname }} </h1>
+                <div class="dateNaissance">
+                    <p>Date de naissance</p>
+                    <p>{{ actor.BirthDate }}</p>
+                </div>
+            </div>
+            <div class="series">
+                <p class="principalesSeries"> Principales séries: </p>
+                {% for program in actor.programs %}
+                    <p><a href="{{ path("program_show", { slug: program.slug }) }}">{{ program.title }}</a></p>
+                {% else %}
+                    <p>Aucun série pour cet acteur</p>
+                {% endfor %}
+            </div>
+        </div>      
+    </div>
+{% endblock %}

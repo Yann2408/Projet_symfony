@@ -1,0 +1,102 @@
+h1{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+span{
+    color: var(--third-color);
+}
+
+.profilContainer{
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+.titre{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.titre p{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.btn-Secondary{
+    height: 30px;
+}
+
+.infos{
+     display: flex;
+     flex-direction: column;
+     width: 70%;
+    }
+    
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.gestionContainer{
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-radius: 5px;
+}
+
+.items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.btnItem{
+    background-color: var(--main-color);
+    color: var(--lighty);
+    padding: 5px;
+    border-radius: 5px;
+    height: 100px;
+    width: 200px;
+}
+
+/* utilisateur show */
+
+.options{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    column-gap: 20px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.btnDelete{
+    background-color: var(--secondary-color);
+    color: var(--lighty);
+    border-radius: 5px;
+    padding: 5px;
+}
+

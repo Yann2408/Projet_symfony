@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/variables.css">
+    <link rel="stylesheet" href="/assets/css/user/index.css">
+{% endblock %}
+
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+
+    <div class="container">
+        <div class="titres">
+            <div class="id">Id</div>
+            <div class="prenom">Prenom</div>
+            <div class="nom">Nom</div>
+            <div class="email">Email</div>
+            <div class="roles">Droits d'utilisateur</div>
+            <div class="actions">Actions</div>
+        </div>
+        {% for user in users %}
+        <div class="infos">
+            <div class="id">{{ user.id }}</div>
+            <div class="prenom">{{ user.prenom }}</div>
+            <div class="nom">{{ user.nom }}</div>
+            <div class="email">{{ user.email }}</div>
+            <div class="roles">{{ user.roles ? user.roles|json_encode : '' }}</div>
+            <div class="actions">
+                <a href="{{ path('user_show', {'id': user.id}) }}">Voir le compte</a>
+                <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier le compte</a>
+                {{ include('user/_delete_form.html.twig') }}
+            </div>
+        </div>
+        {% else %}
+            <p colspan="7">Aucun utilisateur trouvé</p>
+        {% endfor %}
+    </div>
+{% endblock %}

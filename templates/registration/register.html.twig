@@ -4,12 +4,28 @@
     <link rel="stylesheet" href="/assets/css/nouvelUtilisateur.css">
 {% endblock %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
     <div class='container'>
         <h1>Nouvel Utilisateur</h1>
         {{ form_start(registrationForm) }}
+            <div class="field">
+                <div class="label">
+                    {{ form_label(registrationForm.prenom, null)}}
+                </div>
+                <div class="input">
+                    {{ form_widget(registrationForm.prenom)}}
+                </div>
+            </div>
+            <div class="field">
+                <div class="label">
+                    {{ form_label(registrationForm.nom, null)}}
+                </div>
+                <div class="input">
+                    {{ form_widget(registrationForm.nom)}}
+                </div>
+            </div>
             <div class="field">
                 <div class="label">
                     {{ form_label(registrationForm.email, null)}}

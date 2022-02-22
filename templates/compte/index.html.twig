@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ app.user.prenom }} {{ app.user.nom }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/variables.css">
+    <link rel="stylesheet" href="/assets/css/compte/index.css">
+{% endblock %}
+
+{% block body %}
+    <h1>Hello <span>{{ app.user.prenom }} {{ app.user.nom }}</span></h1>
+
+    <div class="profilContainer">
+        <div class="titre">
+            <p>Mon profil</p>
+            <button class="btn-Secondary"><a href="{{ path('user_edit', {'id': app.user.id}) }}">Modifier</a></button>
+        </div>
+        <div class="infos">
+            <div class="row">
+                <p> Prénom: {{ app.user.prenom}}</p>
+                <p> Email: {{ app.user.email}}</p>                
+            </div>
+            <div class="row">
+                <p> Nom: {{ app.user.nom}}</p>
+                <p> Mot de passe: ***** </p>
+            </div>
+        </div>
+    </div>
+    {% if app.user and is_granted("ROLE_ADMIN") %}
+    <div class="gestionContainer">
+        <div class="titre">
+            <p>Gestion</p>
+        </div>
+        <div class="items">
+            <button class="btnItem"><a href="{{ path('program_index') }}">Les séries</a></button>
+            <button class="btnItem"><a href="{{ path('category_index') }}">Les catégories</a></button>
+            <button class="btnItem"><a href="{{ path('actor_index') }}">Les acteurs</a></button>
+            <button class="btnItem"><a href="{{ path('user_index') }}">Les utilisateurs</a></button>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

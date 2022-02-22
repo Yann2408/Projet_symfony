@@ -69,7 +69,3 @@ form{
     width: 100px;
     margin: 20px 0px;
 }
-
-.btn:hover{
-    background-color: var(--main-color);
-}

@@ -45,7 +45,7 @@
         {% for comment in episode.comments %}
             <div class="commentaire">
                 <div class="authorEtNote">
-                    <p>Par {{ comment.author.email}}</p>
+                    <p>Par {{ comment.author.prenom }} {{ comment.author.nom }}</p>
                     <p>{{ comment.rate }}/10</p>
                 </div>
                 <p>{{ comment.comment }}</p>

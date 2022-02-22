@@ -1,0 +1,70 @@
+.options{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn{
+    margin-top: 50px;
+    margin-bottom: 10px;
+    margin-right: 50px;
+}
+
+.btnDelete{
+    background-color: var(--secondary-color);
+    color: var(--lighty);
+    padding: 5px;
+    margin-top: 50px;
+    border-radius: 5px;
+}
+
+.container{
+    background-color: var(--secondary-color);
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.photo{
+    margin: 20px;
+}
+
+img{
+    object-fit: cover;
+    width: 100;
+}
+
+.identiteEtSeries{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-right: 20px;
+}
+
+.identite{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+h1{
+    color: var(--third-color);
+}
+
+.dateNaissance{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.principalesSeries{
+    font-size: 20px;
+    font-weight: bold;
+}

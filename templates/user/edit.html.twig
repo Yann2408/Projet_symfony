@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon profil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/variables.css">
+    <link rel="stylesheet" href="/assets/css/user/form.css">
+{% endblock %}
+
+{% block body %}
+    
+    <button class="btn"><a href="{{ path('compte') }}">Retour</a></button>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}
