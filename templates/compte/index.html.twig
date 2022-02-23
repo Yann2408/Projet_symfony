@@ -24,6 +24,14 @@
                 <p> Nom: {{ app.user.nom}}</p>
                 <p> Mot de passe: ***** </p>
             </div>
+            <div class="sériesFavorites">
+                <p> Mes séries favorites:</p>
+                {% for program in app.user.watchlist %}
+                    <div class="serie">
+                        <a href="{{ path("program_show", { slug: program.slug }) }}">{{program.title}}</a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
     {% if app.user and is_granted("ROLE_ADMIN") %}

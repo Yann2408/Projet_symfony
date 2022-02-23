@@ -182,10 +182,30 @@ class ProgramController extends AbstractController
    #[Route('/program/{id}', name: 'program_delete', methods: ['POST'])]
    public function delete(Request $request, Program $program, EntityManagerInterface $entityManager)
    {
-    if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
-        $entityManager->remove($program);
+        if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($program);
+            $entityManager->flush();
+        }
+   }
+
+   /**
+    * 
+    * @return void
+    *@Route("/program/{id}/watchlist", methods = {"GET", "POST"}, name="program_watchlist")
+    */
+   public function addToWatchlist(Program $program, Request $request, EntityManagerInterface $entityManager)
+   {
+        if ($this->getUser()->isInWatchList($program)) {
+            $this->getUser()->removeWatchlist($program);
+        } else {
+            $this->getUser()->addWatchlist($program);
+        }
+
         $entityManager->flush();
-    }
+
+        return $this->redirectToRoute('program_show', [
+            'slug' => $program->getSlug()
+        ]);
    }
 }
 

@@ -24,6 +24,11 @@
         <div class="infos">
             <div class="title">
                 <h1>{{program.title }}</h1>
+                 <div class="favoris">
+                    <a href="{{ path('program_watchlist', {id: program.id})}}">
+                        {{ app.user.isInWatchlist(program) ? '<i class="fa-solid fa-heart"></i>' : 'Ajouter à mes favoris' }}
+                    </a>
+                </div>
             </div>
             <div class="resumeSaisons">
                 <div class="resume">
@@ -50,9 +55,9 @@
             <a href="{{ path('actor_show', {'id': actor.id}) }}">{{ actor.firstname }} {{ actor.lastname }}</a>
         </div>
         {% else %}
-            <li>Aucun acteur pour cette série</li>
+            <p>Aucun acteur pour cette série</p>
         {% endfor %}
-    <div>
+    </div>
 </div>
 {% endblock %}
     

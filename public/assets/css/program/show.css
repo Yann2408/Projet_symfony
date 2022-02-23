@@ -59,9 +59,25 @@ img{
 }
 
 .title{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    /* justify-content: space-between; */
+    align-items: center;
     color: var(--third-color);
     font-size: 20px;
     padding-left: 3%;
+}
+
+.favoris{
+    /* width: 30%; */
+    display: flex;
+    justify-content: center;
+}
+
+.fa-solid{
+    color: red;
+    font-size: 30px;
 }
 
 .resume{

@@ -27,5 +27,13 @@
                 <p> Mot de passe: ***** </p>
             </div>
         </div>
+        <div class="sériesFavorites">
+                <p> Mes séries favorites:</p>
+                {% for program in user.watchlist %}
+                    <div class="serie">
+                        <a href="{{ path("program_show", { slug: program.slug }) }}">{{program.title}}</a>
+                    </div>
+                {% endfor %}
+            </div>
     </div>
 {% endblock %}
